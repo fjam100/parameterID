@@ -1,0 +1,23 @@
+Real-Time Interface project marker file.
+
+BuildDir:           yes
+Model:              reaadChannel
+TMF:                C:\dSPACE\matlab\rti1103\m\rti1103.tmf
+MATLAB:             7.10.0.499 (R2010a)
+Simulink:           Simulink 7.5 (R2010a) 25-Jan-2010
+SimStruct:          18-Jan-2010 15:44:42
+RTW:                Real-Time Workshop 7.5 (R2010a) 25-Jan-2010
+RTI:                RTI1103 6.5 (10-May-2010)
+RTI-MP:             n.a.
+RTICAN:             n.a.
+RTICANMM:           n.a.
+RTI4301:            n.a.
+RTILIN:             n.a.
+RTILINMM:           n.a.
+RTIBYPASS1:         n.a.
+RTIBYPASS:          n.a.
+RTIFLEXRAY:         n.a.
+RTIFLEXRAYCONFIG:   n.a.
+RTIRPCU:            n.a.
+MDBS:               n.a.
+TALIB:              n.a.

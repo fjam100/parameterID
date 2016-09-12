@@ -1,0 +1,30 @@
+-- ******** Model variables ***************************************************
+
+group "Model Root"
+{
+ flags: COLLAPSED
+}
+  
+  
+	group "DS1103ADC_C17" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+		-- Skipping output ADC
+	endgroup -- subsystem-group "DS1103ADC_C17"
+  
+  
+	group "DS1103ENC_SETUP" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+	endgroup -- subsystem-group "DS1103ENC_SETUP"
+
+
+
+
+endgroup -- "Model Root"

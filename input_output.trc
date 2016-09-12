@@ -1,0 +1,592 @@
+-- ****************************************************************************
+--
+--  Trace file: input_output.trc
+--
+--  RTI1103 6.5 (10-May-2010)
+--  Mon Sep 05 14:08:31 2016
+--
+--  Used options:
+--    TRCGenerateVirtualBlocks      = 1
+--    TRCGenerateLabels             = 1
+--    TRCMaskParameters             = 0
+--    TRCGenerateStates             = 0
+--    TRCGenerateDerivatives        = 0
+--    TRCGenerateParamValues        = 0
+--    TRCGenerateApplicationKeyword = 0
+--    EnableRTWCodeReuse            = 1
+--    TRCOnlyGlobals                = 0
+--
+--  Trace file format: 2
+--
+--  (c) Copyright 2008, dSPACE GmbH. All rights reserved.
+--
+-- ****************************************************************************
+
+-- ******** Keywords **********************************************************
+
+-- _application "input_output.map"
+
+_genname     "RTI"
+_genversion  "6.5"
+_gendate     "09/05/2016 14:08:38"
+_description ""
+_author      "RTI1103 6.5 (10-May-2010)"
+_model       "input_output.mdl"
+
+-- Default data type formats
+_floating_point_type(64,IEEE)
+_integer_type(32)
+
+-- No Data Capture blocks within model: use base sample time as sampling period
+sampling_period[0]
+{
+  value:       0.001
+  alias:       "HostService"
+  increment:   0.001
+  unit:        "s"
+}
+
+
+-- Type definitions for arrays
+typedef input_output_ArrayDT0_180000 flt(64,IEEE)[180000]
+typedef input_output_ArrayDT0_180000_Col col flt(64,IEEE)[180000]
+
+
+-- ******** Simulation control variables **************************************
+
+finalTime
+{
+ type:  flt(64,IEEE)*
+ alias: "finalTime"
+ desc:  "Simulation stop time. When reached, simState switches to STOP."
+ flags:  SYSTEM|READONLY
+ unit:  "s"
+}
+
+currentTime
+{
+ type:  flt(64,IEEE)*
+ alias: "currentTime"
+ desc:  "Current simulation time. Increments with execution of Timer Task 1."
+ flags: SYSTEM|READONLY
+ unit:  "s"
+}
+
+modelStepSize
+{
+ type:  flt(64,IEEE)
+ alias: "modelStepSize"
+ desc:  "Fixed step size of the model, sample time of Timer Task 1."
+ flags: SYSTEM|READONLY
+ unit:  "s"
+}
+
+simState
+{
+ type:  int(32)
+ alias: "simState"
+ desc:  "Simulation state: STOP=0 PAUSE=1 RUN=2"
+ flags: SYSTEM
+ unit:  "-"
+}
+
+msg_last_error_no
+{
+ type:  uint(32)
+ alias: "errorNumber"
+ desc:  "Error number of last error message (zero if no error)."
+ unit:  "-"
+ flags: SYSTEM|READONLY
+}
+
+rtiAssertionMode
+{
+ type:  int(32)
+ alias: "rtiAssertionMode"
+ desc:  "Assertion Mode: OFF=0 WARN=1 STOP=2"
+ flags: SYSTEM
+ unit:  "-"
+}
+
+
+-- ******** Model variables ***************************************************
+
+group "Model Root"
+{
+ flags: COLLAPSED
+}
+	group "Reset" -- block-group
+	{
+	 block: "Constant"
+	 desc:  ""
+	 flags: BLOCK|COLLAPSED
+	}
+		-- Skipping output Out1
+		p_input_output_P_real_T_0[0]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Value"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "Reset"
+
+	group "Discrete-Time\nIntegrator" -- block-group
+	{
+	 block: "DiscreteIntegrator"
+	 desc:  ""
+	 flags: BLOCK|COLLAPSED
+	}
+		p_input_output_B_real_T_0[0]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 desc:    ""
+		 flags:   OUTPUT|READONLY
+		}
+		p_input_output_P_real_T_0[1]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "gainval"
+		 flags:   PARAM
+		}
+		p_input_output_P_real_T_0[2]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "InitialCondition"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "Discrete-Time\nIntegrator"
+
+	group "index" -- block-group
+	{
+	 block: "Gain"
+	 desc:  ""
+	 flags: BLOCK|COLLAPSED
+	}
+		p_input_output_B_real_T_0[1]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 desc:    ""
+		 flags:   OUTPUT|READONLY
+		}
+		p_input_output_P_real_T_0[3]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Gain"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "index"
+
+	group "u" -- block-group
+	{
+	 block: "Product"
+	 desc:  ""
+	 flags: BLOCK|COLLAPSED
+	}
+		p_input_output_B_real_T_0[3]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 desc:    ""
+		 flags:   OUTPUT|READONLY
+		}
+
+
+	endgroup -- block-group "u"
+
+	group "preu" -- block-group
+	{
+	 block: "LookupNDDirect"
+	 desc:  ""
+	 flags: BLOCK|COLLAPSED
+	}
+		p_input_output_B_real_T_0[2]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Out1"
+		 desc:    ""
+		 flags:   OUTPUT|READONLY
+		}
+		p_input_output_B_real_T_0[1]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "In1"
+		 desc:    ""
+		 flags:   SINK|READONLY
+		}
+
+		p_input_output_P_real_T_0[4]
+		{
+		 type:    input_output_ArrayDT0_180000_Col*
+		 alias:   "LookUpTableData"
+		 flags:   PARAM
+		}
+
+		p_input_output_P_real_T_0[4]
+		{
+		 type:    input_output_ArrayDT0_180000*
+		 alias:   "table"
+		 flags:   PARAM
+		}
+
+
+	endgroup -- block-group "preu"
+
+  
+  
+	group "DS1103DAC_C2" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+	endgroup -- subsystem-group "DS1103DAC_C2"
+  
+  
+	group "DS1103ENC_SETUP" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+	endgroup -- subsystem-group "DS1103ENC_SETUP"
+  
+  
+	group "EncoderY" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+		p_input_output_B_real_T_1[0]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "EncPosY"
+		 desc:    ""
+		 flags:   OUTPUT|READONLY
+		}
+		-- Skipping output EncVelY
+
+		group "encGainY" -- block-group
+		{
+		 block: "Gain"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_input_output_B_real_T_1[0]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Out1"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_input_output_P_real_T_0[180004]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Gain"
+			 flags:   PARAM
+			}
+
+
+		endgroup -- block-group "encGainY"
+
+  
+  
+		group "DS1103ENC_POS_C3" -- subsystem-group
+		{
+		 flags: COLLAPSED
+		 desc:  ""
+		}
+
+			p_input_output_B_real_T_0[4]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Enc position"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			-- Skipping output Enc delta position
+		endgroup -- subsystem-group "DS1103ENC_POS_C3"
+
+
+	endgroup -- subsystem-group "EncoderY"
+  
+  
+	group "RTI Data" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+	endgroup -- subsystem-group "RTI Data"
+  
+  
+	group "VelY" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+		p_input_output_B_real_T_1[3]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "Y"
+		 desc:    ""
+		 flags:   OUTPUT|READONLY
+		}
+
+		group "U" -- block-group
+		{
+		 block: "Inport"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_input_output_B_real_T_1[0]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Out1"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+
+
+		endgroup -- block-group "U"
+
+		group "Diff" -- block-group
+		{
+		 block: "Sum"
+		 desc:  "\nAdd in CPU"
+		 flags: BLOCK|COLLAPSED
+		}
+			p_input_output_B_real_T_1[3]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Out1"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+
+
+		endgroup -- block-group "Diff"
+
+		group "UD" -- block-group
+		{
+		 block: "UnitDelay"
+		 desc:  "\nStore in Global RAM"
+		 flags: BLOCK|COLLAPSED
+		}
+			p_input_output_B_real_T_1[2]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Out1"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_input_output_P_real_T_0[180006]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "X0"
+			 flags:   PARAM
+			}
+
+
+		endgroup -- block-group "UD"
+
+		group "Data Type\nDuplicate" -- block-group
+		{
+		 block: "DataTypeDuplicate"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_input_output_B_real_T_1[3]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "In1"
+			 desc:    ""
+			 flags:   SINK|READONLY
+			}
+			p_input_output_B_real_T_1[1]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "In2"
+			 desc:    ""
+			 flags:   SINK|READONLY
+			}
+			p_input_output_B_real_T_1[2]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "In3"
+			 desc:    ""
+			 flags:   SINK|READONLY
+			}
+
+
+
+		endgroup -- block-group "Data Type\nDuplicate"
+
+		group "TSamp" -- block-group
+		{
+		 block: "SampleTimeMath"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_input_output_B_real_T_1[1]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Out1"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_input_output_P_real_T_0[180005]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "WtEt"
+			 flags:   PARAM
+			}
+
+
+		endgroup -- block-group "TSamp"
+
+
+		p_input_output_B_real_T_1[2]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "U(k-1)"
+		 desc:    ""
+		 origin:  "input_output/VelY/UD/Out1"
+		 flags:   LABEL|READONLY
+		}
+
+	endgroup -- subsystem-group "VelY"
+
+
+
+
+endgroup -- "Model Root"
+-- ******** Model Root Parameters from model_mrp.trc **************************
+-- Model Root Parameters file is only generated if option TRCMaskParameters is enabled
+
+-- ******** Tunable Parameters ************************************************
+
+-- InlineParameters is off: no separate group for Tunable Parameters
+
+
+-- ******** State Machine Data ************************************************
+
+-- No Stateflow chart within the model.
+
+
+-- ******** Data Store Memories ***********************************************
+
+-- No Data Store Memories within the model.
+
+
+-- ******** Labels ************************************************************
+
+group "Labels"
+{
+ flags: COLLAPSED
+}
+	p_input_output_B_real_T_1[2]
+	{
+	 type:    flt(64,IEEE)*
+	 alias:   "U(k-1)"
+	 desc:    ""
+	 origin:  "input_output/VelY/UD/Out1"
+	 flags:   LABEL|READONLY
+	}
+
+endgroup
+
+-- ******** RTT Dynamic Variables *********************************************
+
+-- Generation of RTT Dynamic Variables turned off with EnableRealTimeTesting option.
+
+-- ******** User variables from model_usr.trc *********************************
+
+-- RTI_USR_TRC_BEGIN
+
+-- No user file input_output_usr.trc found.
+
+-- RTI_USR_TRC_END
+
+-- ******** Task Information variables ****************************************
+
+group "Task Info"
+{
+ flags: COLLAPSED
+}
+  group "Timer Task 1"
+  {
+   flags: COLLAPSED
+  }
+
+  pRti_TIMERA_STime
+  {
+   type:  flt(64,IEEE)*
+   alias: "sampleTime"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_TTime
+  {
+   type:  flt(64,IEEE)*
+   alias: "turnaroundTime"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_TState
+  {
+   type:  int(32)*
+   alias: "state"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_OType
+  {
+   type:  int(32)*
+   alias: "overrunCheckType"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_OMax
+  {
+   type:  int(32)*
+   alias: "overrunQueueMax"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_ORpt
+  {
+   type:  int(32)*
+   alias: "overrunQueueCount"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_OCnt
+  {
+   type:  int(32)*
+   alias: "overrunCount"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_TCnt
+  {
+   type:  flt(64,IEEE)*
+   alias: "taskCallCount"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_Prio
+  {
+   type:  int(32)*
+   alias: "priority"
+   flags: SYSTEM|READONLY
+  }
+  endgroup
+
+endgroup
+
+-- ******** [EOF] *************************************************************
+
+
+

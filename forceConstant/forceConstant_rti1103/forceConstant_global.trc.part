@@ -1,0 +1,36 @@
+-- ******** Tunable Parameters ************************************************
+
+-- InlineParameters is off: no separate group for Tunable Parameters
+
+
+-- ******** State Machine Data ************************************************
+
+-- No Stateflow chart within the model.
+
+
+-- ******** Data Store Memories ***********************************************
+
+-- No Data Store Memories within the model.
+
+
+-- ******** Labels ************************************************************
+
+group "Labels"
+{
+ flags: COLLAPSED
+}
+	p_forceConstant_B_real_T_1[2]
+	{
+	 type:    flt(64,IEEE)*
+	 alias:   "U(k-1)"
+	 desc:    ""
+	 origin:  "forceConstant/VelY/UD/Out1"
+	 flags:   LABEL|READONLY
+	}
+
+endgroup
+
+-- ******** RTT Dynamic Variables *********************************************
+
+-- Generation of RTT Dynamic Variables turned off with EnableRealTimeTesting option.
+

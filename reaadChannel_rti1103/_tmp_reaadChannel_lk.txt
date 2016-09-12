@@ -1,0 +1,1 @@
+-- call "C:\PPCTools35\BIN\lnkppc.exe"  -QmsA0407 -QmsA0314 -QmeA0307 -QmeA0329 -m ..\reaadChannel.map -o ..\reaadChannel.ppc -c _tmp_reaadChannel.lk 
