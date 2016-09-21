@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "forceConstant.mdl".
  *
- * Model version              : 1.1
+ * Model version              : 1.6
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Sun Sep 11 14:15:03 2016
+ * C source code generated on : Wed Sep 21 14:17:39 2016
  *
  * Target selection: rti1103.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

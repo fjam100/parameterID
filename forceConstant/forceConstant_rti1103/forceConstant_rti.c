@@ -6,7 +6,7 @@
    the hardware and software interrupts used.
 
    RTI1103 6.5 (10-May-2010)
-   Sun Sep 11 14:15:03 2016
+   Wed Sep 21 14:17:39 2016
 
    (c) Copyright 2006, dSPACE GmbH. All rights reserved.
 
@@ -108,7 +108,12 @@ static void rti_mdl_initialize_io_boards(void)
   ds1103_inc_init(7, DS1103_INC_CH7_VPP|DS1103_INC_CH7_38BIT);
 
   /* Initialization of Master ADC units */
+  ds1103_adc_trigger_setup(5, DS1103_TRIGGER_DISABLE);
+  ds1103_adc_trigger_setup(6, DS1103_TRIGGER_DISABLE);
+  ds1103_adc_trigger_setup(7, DS1103_TRIGGER_DISABLE);
+  ds1103_adc_trigger_setup(8, DS1103_TRIGGER_DISABLE);
   ds1103_adc_trigger_setup(2, DS1103_TRIGGER_DISABLE);
+  ds1103_adc_trigger_setup(3, DS1103_TRIGGER_DISABLE);
 
   /* Initialization of Master MUXADC units */
   /* Initialization of Master DAC units */
@@ -161,8 +166,15 @@ __INLINE void rti_mdl_sample_input(void)
   /* dSPACE I/O Board DS1103 #1 Unit:MultiAdc */
   {
     Float64 pvalues[20];
-    ds1103_adc_multi_conv_read(DS1103_ADC_CHANNEL5, pvalues);
-    forceConstant_B.SFunction = pvalues[4];
+    ds1103_adc_multi_conv_read(DS1103_ADC_CHANNEL9|DS1103_ADC_CHANNEL5|
+      DS1103_ADC_CHANNEL20|DS1103_ADC_CHANNEL19|DS1103_ADC_CHANNEL18|
+      DS1103_ADC_CHANNEL17, pvalues);
+    forceConstant_B.SFunction_l4 = pvalues[8];
+    forceConstant_B.SFunction_p = pvalues[4];
+    forceConstant_B.SFunction_e = pvalues[19];
+    forceConstant_B.SFunction_m = pvalues[18];
+    forceConstant_B.SFunction_l = pvalues[17];
+    forceConstant_B.SFunction = pvalues[16];
   }
 
   /* dSPACE I/O Board DS1103 #1 Unit:ENC_POS Group:POS */

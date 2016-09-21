@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "forceConstant.mdl".
  *
- * Model version              : 1.1
+ * Model version              : 1.6
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Sun Sep 11 14:15:03 2016
+ * C source code generated on : Wed Sep 21 14:17:39 2016
  *
  * Target selection: rti1103.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -32,7 +32,87 @@ RT_MODEL_forceConstant *forceConstant_M = &forceConstant_M_;
 static void forceConstant_output(int_T tid)
 {
   uint32_T initialOffset;
-  real_T tmp;
+  int32_T tmp;
+  int32_T tmp_0;
+  real_T tmp_1;
+
+  /* S-Function (rti_commonblock): '<S1>/S-Function' */
+  /* This comment workarounds a Real-Time Workshop code generation problem */
+
+  /* S-Function (rti_commonblock): '<S2>/S-Function' */
+  /* This comment workarounds a Real-Time Workshop code generation problem */
+
+  /* S-Function (rti_commonblock): '<S3>/S-Function' */
+  /* This comment workarounds a Real-Time Workshop code generation problem */
+
+  /* S-Function (rti_commonblock): '<S4>/S-Function' */
+  /* This comment workarounds a Real-Time Workshop code generation problem */
+
+  /* S-Function (rti_commonblock): '<S7>/S-Function' */
+  /* This comment workarounds a Real-Time Workshop code generation problem */
+
+  /* S-Function (rti_commonblock): '<S8>/S-Function' */
+  /* This comment workarounds a Real-Time Workshop code generation problem */
+
+  /* Gain: '<Root>/channel5' */
+  forceConstant_B.VectorConcatenate[0] = forceConstant_P.channel5_Gain *
+    forceConstant_B.SFunction_p;
+
+  /* Gain: '<Root>/channel9' */
+  forceConstant_B.VectorConcatenate[1] = forceConstant_P.channel9_Gain *
+    forceConstant_B.SFunction_l4;
+
+  /* Gain: '<Root>/channel17' */
+  forceConstant_B.VectorConcatenate[2] = forceConstant_P.channel17_Gain *
+    forceConstant_B.SFunction;
+
+  /* Gain: '<Root>/channel18' */
+  forceConstant_B.VectorConcatenate[3] = forceConstant_P.channel18_Gain *
+    forceConstant_B.SFunction_l;
+
+  /* Gain: '<Root>/channel19' */
+  forceConstant_B.VectorConcatenate[4] = forceConstant_P.channel19_Gain *
+    forceConstant_B.SFunction_m;
+
+  /* Gain: '<Root>/channel20' */
+  forceConstant_B.VectorConcatenate[5] = forceConstant_P.channel20_Gain *
+    forceConstant_B.SFunction_e;
+
+  /* Product: '<Root>/Matrix Multiply' incorporates:
+   *  Constant: '<Root>/Constant'
+   */
+  for (tmp = 0; tmp < 6; tmp++) {
+    forceConstant_B.MatrixMultiply[tmp] = 0.0;
+    for (tmp_0 = 0; tmp_0 < 6; tmp_0++) {
+      forceConstant_B.MatrixMultiply[tmp] = forceConstant_P.Constant_Value[6 *
+        tmp_0 + tmp] * forceConstant_B.VectorConcatenate[tmp_0] +
+        forceConstant_B.MatrixMultiply[tmp];
+    }
+  }
+
+  /* Gain: '<Root>/GainFx' */
+  forceConstant_B.GainFx = forceConstant_P.GainFx_Gain *
+    forceConstant_B.MatrixMultiply[0];
+
+  /* Gain: '<Root>/GainFy' */
+  forceConstant_B.GainFy = forceConstant_P.GainFy_Gain *
+    forceConstant_B.MatrixMultiply[1];
+
+  /* Gain: '<Root>/GainFz' */
+  forceConstant_B.GainFz = forceConstant_P.GainFz_Gain *
+    forceConstant_B.MatrixMultiply[2];
+
+  /* Gain: '<Root>/GainMx' */
+  forceConstant_B.GainMx = forceConstant_P.GainMx_Gain *
+    forceConstant_B.MatrixMultiply[3];
+
+  /* Gain: '<Root>/GainMy' */
+  forceConstant_B.GainMy = forceConstant_P.GainMy_Gain *
+    forceConstant_B.MatrixMultiply[4];
+
+  /* Gain: '<Root>/GainMz' */
+  forceConstant_B.GainMz = forceConstant_P.GainMz_Gain *
+    forceConstant_B.MatrixMultiply[5];
 
   /* DiscreteIntegrator: '<Root>/Discrete-Time Integrator' */
   forceConstant_B.DiscreteTimeIntegrator =
@@ -47,15 +127,15 @@ static void forceConstant_output(int_T tid)
    * About '<Root>/input':
    *  1-dimensional Direct Look-Up returning a Scalar
    */
-  tmp = rt_SATURATE(forceConstant_B.index, 0.0, 29999.0);
-  if (rtIsNaN(tmp) || rtIsInf(tmp)) {
-    tmp = 0.0;
+  tmp_1 = rt_SATURATE(forceConstant_B.index, 0.0, 99999.0);
+  if (rtIsNaN(tmp_1) || rtIsInf(tmp_1)) {
+    tmp_1 = 0.0;
   } else {
-    tmp = fmod(floor(tmp), 4.294967296E+009);
+    tmp_1 = fmod(floor(tmp_1), 4.294967296E+009);
   }
 
-  initialOffset = tmp < 0.0 ? (uint32_T)(-((int32_T)(uint32_T)(-tmp))) :
-    (uint32_T)tmp;
+  initialOffset = tmp_1 < 0.0 ? (uint32_T)(-((int32_T)(uint32_T)(-tmp_1))) :
+    (uint32_T)tmp_1;
   forceConstant_B.input = forceConstant_P.input_table[initialOffset];
 
   /* Product: '<Root>/u' incorporates:
@@ -63,61 +143,54 @@ static void forceConstant_output(int_T tid)
    */
   forceConstant_B.u = forceConstant_P.Reset_Value * forceConstant_B.input;
 
-  /* S-Function (rti_commonblock): '<S1>/S-Function1' */
+  /* S-Function (rti_commonblock): '<S5>/S-Function1' */
   /* This comment workarounds a Real-Time Workshop code generation problem */
 
   /* dSPACE I/O Board DS1103 #1 Unit:DAC */
   ds1103_dac_write(2, forceConstant_B.u);
 
-  /* S-Function (rti_commonblock): '<S3>/S-Function' */
+  /* S-Function (rti_commonblock): '<S12>/S-Function1' */
   /* This comment workarounds a Real-Time Workshop code generation problem */
 
-  /* Gain: '<Root>/channel5' */
-  forceConstant_B.channel5 = forceConstant_P.channel5_Gain *
-    forceConstant_B.SFunction;
-
-  /* S-Function (rti_commonblock): '<S7>/S-Function1' */
+  /* S-Function (rti_commonblock): '<S12>/S-Function2' */
   /* This comment workarounds a Real-Time Workshop code generation problem */
 
-  /* S-Function (rti_commonblock): '<S7>/S-Function2' */
-  /* This comment workarounds a Real-Time Workshop code generation problem */
-
-  /* Gain: '<S4>/encGainY' */
+  /* Gain: '<S9>/encGainY' */
   forceConstant_B.encGainY = forceConstant_P.encGainY_Gain *
     forceConstant_B.SFunction1;
 
-  /* SampleTimeMath: '<S6>/TSamp'
+  /* SampleTimeMath: '<S11>/TSamp'
    *
-   * About '<S6>/TSamp':
+   * About '<S11>/TSamp':
    *  y = u * K where K = 1 / ( w * Ts )
    */
   forceConstant_B.TSamp = forceConstant_B.encGainY * forceConstant_P.TSamp_WtEt;
 
-  /* UnitDelay: '<S6>/UD' */
+  /* UnitDelay: '<S11>/UD' */
   forceConstant_B.Uk1 = forceConstant_DWork.UD_DSTATE;
 
-  /* Sum: '<S6>/Diff' */
+  /* Sum: '<S11>/Diff' */
   forceConstant_B.Diff = forceConstant_B.TSamp - forceConstant_B.Uk1;
 
-  /* S-Function (rti_commonblock): '<S2>/S-Function1' */
+  /* S-Function (rti_commonblock): '<S6>/S-Function1' */
   /* This comment workarounds a Real-Time Workshop code generation problem */
 
-  /* S-Function (rti_commonblock): '<S2>/S-Function2' */
+  /* S-Function (rti_commonblock): '<S6>/S-Function2' */
   /* This comment workarounds a Real-Time Workshop code generation problem */
 
-  /* S-Function (rti_commonblock): '<S2>/S-Function3' */
+  /* S-Function (rti_commonblock): '<S6>/S-Function3' */
   /* This comment workarounds a Real-Time Workshop code generation problem */
 
-  /* S-Function (rti_commonblock): '<S2>/S-Function4' */
+  /* S-Function (rti_commonblock): '<S6>/S-Function4' */
   /* This comment workarounds a Real-Time Workshop code generation problem */
 
-  /* S-Function (rti_commonblock): '<S2>/S-Function5' */
+  /* S-Function (rti_commonblock): '<S6>/S-Function5' */
   /* This comment workarounds a Real-Time Workshop code generation problem */
 
-  /* S-Function (rti_commonblock): '<S2>/S-Function6' */
+  /* S-Function (rti_commonblock): '<S6>/S-Function6' */
   /* This comment workarounds a Real-Time Workshop code generation problem */
 
-  /* S-Function (rti_commonblock): '<S2>/S-Function7' */
+  /* S-Function (rti_commonblock): '<S6>/S-Function7' */
   /* This comment workarounds a Real-Time Workshop code generation problem */
 
   /* user code (Output function Trailer) */
@@ -144,7 +217,7 @@ static void forceConstant_update(int_T tid)
     forceConstant_P.DiscreteTimeIntegrator_gainval * forceConstant_P.Reset_Value
     + forceConstant_DWork.DiscreteTimeIntegrator_DSTATE;
 
-  /* Update for UnitDelay: '<S6>/UD' */
+  /* Update for UnitDelay: '<S11>/UD' */
   forceConstant_DWork.UD_DSTATE = forceConstant_B.TSamp;
 
   /* Update absolute time for base rate */
@@ -262,9 +335,9 @@ void MdlInitializeSizes(void)
   forceConstant_M->Sizes.numU = (0);   /* Number of model inputs */
   forceConstant_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   forceConstant_M->Sizes.numSampTimes = (1);/* Number of sample times */
-  forceConstant_M->Sizes.numBlocks = (22);/* Number of blocks */
-  forceConstant_M->Sizes.numBlockIO = (12);/* Number of block outputs */
-  forceConstant_M->Sizes.numBlockPrms = (30008);/* Sum of parameter "widths" */
+  forceConstant_M->Sizes.numBlocks = (41);/* Number of blocks */
+  forceConstant_M->Sizes.numBlockIO = (24);/* Number of block outputs */
+  forceConstant_M->Sizes.numBlockPrms = (100055);/* Sum of parameter "widths" */
 }
 
 void MdlInitializeSampleTimes(void)
@@ -277,7 +350,7 @@ void MdlInitialize(void)
   forceConstant_DWork.DiscreteTimeIntegrator_DSTATE =
     forceConstant_P.DiscreteTimeIntegrator_IC;
 
-  /* InitializeConditions for UnitDelay: '<S6>/UD' */
+  /* InitializeConditions for UnitDelay: '<S11>/UD' */
   forceConstant_DWork.UD_DSTATE = forceConstant_P.UD_X0;
 }
 

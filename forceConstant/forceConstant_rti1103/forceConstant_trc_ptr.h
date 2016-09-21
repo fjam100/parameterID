@@ -5,7 +5,7 @@
    Declaration of function that initializes the global TRC pointers
 
    RTI1103 6.5 (10-May-2010)
-   Sun Sep 11 14:15:03 2016
+   Wed Sep 21 14:17:39 2016
 
    (c) Copyright 2008, dSPACE GmbH. All rights reserved.
 
@@ -35,9 +35,9 @@
               EXTERN_C volatile  real_T *p_forceConstant_DWork_real_T_0;
 
    #define RTI_INIT_TRC_POINTERS() \
-              p_forceConstant_B_real_T_0 = &forceConstant_B.DiscreteTimeIntegrator;\
+              p_forceConstant_B_real_T_0 = &forceConstant_B.SFunction;\
               p_forceConstant_B_real_T_1 = &forceConstant_B.encGainY;\
-              p_forceConstant_P_real_T_0 = &forceConstant_P.Reset_Value;\
+              p_forceConstant_P_real_T_0 = &forceConstant_P.Constant_Value[0];\
               p_forceConstant_DWork_real_T_0 = &forceConstant_DWork.DiscreteTimeIntegrator_DSTATE;\
 
    #endif                       /* RTI_HEADER_forceConstant_trc_ptr_h_ */

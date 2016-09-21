@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2"
+    ComputedModelVersion    "1.6"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,9 +31,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "daq"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Sep 11 14:18:14 2016"
-  RTWModifiedTimeStamp	  395499373
-  ModelVersionFormat	  "1.%<AutoIncrement:2>"
+  LastModifiedDate	  "Wed Sep 21 13:42:09 2016"
+  RTWModifiedTimeStamp	  396366122
+  ModelVersionFormat	  "1.%<AutoIncrement:6>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -618,7 +618,7 @@ Model {
 		  ExtModeTesting	  off
 		  ExtModeStaticAllocSize  1000000
 		  ExtModeTransport	  0
-		  ExtModeMexFile	  "ext_comm"
+		  ExtModeMexFile	  "noextcomm"
 		  ExtModeIntrfLevel	  "Level1"
 		  RTWCAPISignals	  off
 		  RTWCAPIParams		  off
@@ -850,6 +850,11 @@ Model {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Concatenate
+      NumInputs		      "2"
+      ConcatenateDimension    "1"
+    }
+    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -865,6 +870,12 @@ Model {
       SampleTime	      "inf"
       FramePeriod	      "inf"
       PreserveConstantTs      off
+    }
+    Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
     }
     Block {
       BlockType		      DiscreteIntegrator
@@ -993,7 +1004,7 @@ Model {
   }
   System {
     Name		    "forceConstant"
-    Location		    [705, 192, 1810, 944]
+    Location		    [340, 192, 1810, 1109]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1007,7 +1018,136 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    30
+    SIDHighWatermark	    94
+    Block {
+      BlockType		      Constant
+      Name		      "Constant"
+      SID		      35
+      Position		      [670, 465, 700, 495]
+      Value		      "calMatrix"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "DS1103ADC_C17"
+      SID		      36
+      Ports		      [0, 1]
+      Position		      [170, 526, 260, 564]
+      LibraryVersion	      "1.101"
+      SourceBlock	      "rtilib1103/DS1103 MASTER PPC/DS1103ADC_C17"
+      SourceType	      "DS1103ADC_C"
+      ShowPortLabels	      "FromPortIcon"
+      SystemSampleTime	      "-1"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      ChannelNo		      "17"
+      TimerAPreTrigger	      "0"
+      Reserved2		      "[]"
+      Reserved3		      "[]"
+      Reserved4		      "[]"
+      DialogFcn		      "gui1103adc"
+      UnitName		      "{ 'DS1103ADC_C' }"
+      UnitValues	      "{ 17 }"
+      DSProperties	      "struct('RTI',struct('Version',uint32(1),'BlockType',struct('isSLSource',uint8(1),'isSLSink',"
+      "uint8(0),'isHWSource',uint8(1),'isHWSink',uint8(0),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8(0)"
+      ",'isInterrupt',uint8(0),'isChannelwise',uint8(1)),'IOBoardType','DS1103MASTER','UnitType','ADC','Identifier','AD"
+      "C','DialogType','ML','BlockSet','NONE','SlaveProcessor','NONE'))"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "DS1103ADC_C18"
+      SID		      37
+      Ports		      [0, 1]
+      Position		      [170, 611, 260, 649]
+      LibraryVersion	      "1.101"
+      SourceBlock	      "rtilib1103/DS1103 MASTER PPC/DS1103ADC_C17"
+      SourceType	      "DS1103ADC_C"
+      ShowPortLabels	      "FromPortIcon"
+      SystemSampleTime	      "-1"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      ChannelNo		      "18"
+      TimerAPreTrigger	      "0"
+      Reserved2		      "[]"
+      Reserved3		      "[]"
+      Reserved4		      "[]"
+      DialogFcn		      "gui1103adc"
+      UnitName		      "{ 'DS1103ADC_C' }"
+      UnitValues	      "{ 18 }"
+      DSProperties	      "struct('RTI',struct('Version',uint32(1),'BlockType',struct('isSLSource',uint8(1),'isSLSink',"
+      "uint8(0),'isHWSource',uint8(1),'isHWSink',uint8(0),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8(0)"
+      ",'isInterrupt',uint8(0),'isChannelwise',uint8(1)),'IOBoardType','DS1103MASTER','UnitType','ADC','Identifier','AD"
+      "C','DialogType','ML','BlockSet','NONE','SlaveProcessor','NONE'))"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "DS1103ADC_C19"
+      SID		      38
+      Ports		      [0, 1]
+      Position		      [170, 686, 260, 724]
+      LibraryVersion	      "1.101"
+      SourceBlock	      "rtilib1103/DS1103 MASTER PPC/DS1103ADC_C17"
+      SourceType	      "DS1103ADC_C"
+      ShowPortLabels	      "FromPortIcon"
+      SystemSampleTime	      "-1"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      ChannelNo		      "19"
+      TimerAPreTrigger	      "0"
+      Reserved2		      "[]"
+      Reserved3		      "[]"
+      Reserved4		      "[]"
+      DialogFcn		      "gui1103adc"
+      UnitName		      "{ 'DS1103ADC_C' }"
+      UnitValues	      "{ 19 }"
+      DSProperties	      "struct('RTI',struct('Version',uint32(1),'BlockType',struct('isSLSource',uint8(1),'isSLSink',"
+      "uint8(0),'isHWSource',uint8(1),'isHWSink',uint8(0),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8(0)"
+      ",'isInterrupt',uint8(0),'isChannelwise',uint8(1)),'IOBoardType','DS1103MASTER','UnitType','ADC','Identifier','AD"
+      "C','DialogType','ML','BlockSet','NONE','SlaveProcessor','NONE'))"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "DS1103ADC_C20"
+      SID		      39
+      Ports		      [0, 1]
+      Position		      [170, 756, 260, 794]
+      LibraryVersion	      "1.101"
+      SourceBlock	      "rtilib1103/DS1103 MASTER PPC/DS1103ADC_C17"
+      SourceType	      "DS1103ADC_C"
+      ShowPortLabels	      "FromPortIcon"
+      SystemSampleTime	      "-1"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      ChannelNo		      "20"
+      TimerAPreTrigger	      "0"
+      Reserved2		      "[]"
+      Reserved3		      "[]"
+      Reserved4		      "[]"
+      DialogFcn		      "gui1103adc"
+      UnitName		      "{ 'DS1103ADC_C' }"
+      UnitValues	      "{ 20 }"
+      DSProperties	      "struct('RTI',struct('Version',uint32(1),'BlockType',struct('isSLSource',uint8(1),'isSLSink',"
+      "uint8(0),'isHWSource',uint8(1),'isHWSink',uint8(0),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8(0)"
+      ",'isInterrupt',uint8(0),'isChannelwise',uint8(1)),'IOBoardType','DS1103MASTER','UnitType','ADC','Identifier','AD"
+      "C','DialogType','ML','BlockSet','NONE','SlaveProcessor','NONE'))"
+    }
     Block {
       BlockType		      Reference
       Name		      "DS1103DAC_C2"
@@ -1075,9 +1215,9 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "DS1103MUX_ADC_CON2"
-      SID		      19
+      SID		      41
       Ports		      [0, 1]
-      Position		      [135, 401, 225, 439]
+      Position		      [170, 341, 260, 379]
       LibraryVersion	      "1.101"
       SourceBlock	      "rtilib1103/DS1103 MASTER PPC/DS1103MUX_ADC_CON1"
       SourceType	      "DS1103MUX_ADC_CON"
@@ -1104,6 +1244,47 @@ Model {
       "CMUX','DialogType','ML','BlockSet','NONE','SlaveProcessor','NONE'))"
     }
     Block {
+      BlockType		      Reference
+      Name		      "DS1103MUX_ADC_CON3"
+      SID		      42
+      Ports		      [0, 1]
+      Position		      [170, 441, 260, 479]
+      LibraryVersion	      "1.101"
+      SourceBlock	      "rtilib1103/DS1103 MASTER PPC/DS1103MUX_ADC_CON1"
+      SourceType	      "DS1103MUX_ADC_CON"
+      ShowPortLabels	      "FromPortIcon"
+      SystemSampleTime	      "-1"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      ConverterNo	      "3"
+      ChannelNos	      "1"
+      TimerAPreTrigger	      "0"
+      Reserved2		      "[]"
+      Reserved3		      "[]"
+      Reserved4		      "[]"
+      DialogFcn		      "gui1103mux_adc"
+      UnitName		      "{ 'DS1103MUX_ADC_CON' }"
+      UnitValues	      "{ 3 }"
+      DSProperties	      "struct('RTI',struct('Version',uint32(1),'BlockType',struct('isSLSource',uint8(1),'isSLSink',"
+      "uint8(0),'isHWSource',uint8(1),'isHWSink',uint8(0),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8(0)"
+      ",'isInterrupt',uint8(0),'isChannelwise',uint8(0)),'IOBoardType','DS1103MASTER','UnitType','ADC','Identifier','AD"
+      "CMUX','DialogType','ML','BlockSet','NONE','SlaveProcessor','NONE'))"
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux"
+      SID		      61
+      Ports		      [1, 6]
+      Position		      [945, 463, 1025, 637]
+      ShowName		      off
+      Outputs		      "6"
+      DisplayOption	      "bar"
+    }
+    Block {
       BlockType		      DiscreteIntegrator
       Name		      "Discrete-Time\nIntegrator"
       SID		      4
@@ -1124,7 +1305,7 @@ Model {
       Name		      "EncoderY"
       SID		      5
       Ports		      [0, 2]
-      Position		      [775, 391, 830, 449]
+      Position		      [920, 136, 975, 194]
       BackgroundColor	      "orange"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -1234,6 +1415,147 @@ Model {
       }
     }
     Block {
+      BlockType		      Terminator
+      Name		      "Fx"
+      SID		      62
+      Position		      [1175, 465, 1195, 485]
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "Fy"
+      SID		      63
+      Position		      [1175, 495, 1195, 515]
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "Fz"
+      SID		      64
+      Position		      [1175, 525, 1195, 545]
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "GainFx"
+      SID		      65
+      Position		      [1075, 460, 1105, 490]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "GainFy"
+      SID		      66
+      Position		      [1075, 490, 1105, 520]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "GainFz"
+      SID		      67
+      Position		      [1075, 520, 1105, 550]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "GainMx"
+      SID		      68
+      Position		      [1075, 550, 1105, 580]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "GainMy"
+      SID		      69
+      Position		      [1075, 580, 1105, 610]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "GainMz"
+      SID		      70
+      Position		      [1075, 610, 1105, 640]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Product
+      Name		      "Matrix Multiply"
+      SID		      43
+      Ports		      [2, 1]
+      Position		      [775, 514, 830, 556]
+      Multiplication	      "Matrix(*)"
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "Mx"
+      SID		      71
+      Position		      [1175, 555, 1195, 575]
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "My"
+      SID		      72
+      Position		      [1175, 585, 1195, 605]
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "Mz"
+      SID		      73
+      Position		      [1175, 615, 1195, 635]
+    }
+    Block {
       BlockType		      SubSystem
       Name		      "RTI Data"
       SID		      22
@@ -1297,10 +1619,10 @@ Model {
 	Block {
 	  BlockType		  SubSystem
 	  Name			  "RTI Data Store"
-	  SID			  27
+	  SID			  91
 	  Tag			  "struct('private',struct('version',struct('dsVer',uint32(2),'dsVerCreation',uint32(2),'RTI',struct('ver','6"
-	  ".5','type','RTI1103')),'access',struct('type','Model','isPerm',1,'created',['11-Sep-2016 13:27:34'],'modified',['11"
-	  "-Sep-2016 14:18:14'],'location','')),'public',struct('main',struct('data',[]),'sub',struct('name',{{'forceConstant'"
+	  ".5','type','RTI1103')),'access',struct('type','Model','isPerm',1,'created',['11-Sep-2016 13:27:34'],'modified',['21"
+	  "-Sep-2016 13:42:09'],'location','')),'public',struct('main',struct('data',[]),'sub',struct('name',{{'forceConstant'"
 	  "}},'data',{{struct('TH',struct('thTaskInfo',struct('taskType',{'TIMER','HWINT','TMRINT','SWINT'},'tasksNumOf',{1,0,"
 	  "0,0},'srcIds',{{'TIMERA'},{},{},{}},'taskNames',{{['Timer Task 1']},{},{},{}})),'th_tc',struct('dataType','TASK','t"
 	  "askGroupId','','taskGroupList',{{}},'taskSchedulingPolicy','FCFS','taskType','TIMER','blkh',-1,'srcId','TIMERA','sr"
@@ -1350,7 +1672,7 @@ Model {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "RTI Data Store"
-	      SID		      28
+	      SID		      92
 	      Ports		      []
 	      Position		      [146, 15, 181, 28]
 	      ForegroundColor	      "white"
@@ -1391,7 +1713,7 @@ Model {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "RTI Data Store"
-		  SID			  29
+		  SID			  93
 		  Ports			  []
 		  Position		  [146, 15, 181, 28]
 		  ForegroundColor	  "white"
@@ -1432,7 +1754,7 @@ Model {
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "RTI Data Store"
-		    SID			    30
+		    SID			    94
 		    Ports		    []
 		    Position		    [146, 15, 181, 28]
 		    ForegroundColor	    "white"
@@ -1494,13 +1816,13 @@ Model {
       BlockType		      Terminator
       Name		      "Terminator"
       SID		      11
-      Position		      [890, 535, 910, 555]
+      Position		      [1035, 280, 1055, 300]
     }
     Block {
       BlockType		      Terminator
       Name		      "Terminator1"
       SID		      12
-      Position		      [890, 395, 910, 415]
+      Position		      [1035, 140, 1055, 160]
     }
     Block {
       BlockType		      Terminator
@@ -1512,20 +1834,23 @@ Model {
       BlockType		      Terminator
       Name		      "Terminator3"
       SID		      14
-      Position		      [1020, 475, 1040, 495]
+      Position		      [1165, 220, 1185, 240]
     }
     Block {
-      BlockType		      Terminator
-      Name		      "Terminator4"
-      SID		      20
-      Position		      [390, 410, 410, 430]
+      BlockType		      Concatenate
+      Name		      "Vector\nConcatenate"
+      SID		      51
+      Ports		      [6, 1]
+      Position		      [595, 484, 630, 606]
+      NumInputs		      "6"
+      Mode		      "Vector"
     }
     Block {
       BlockType		      Reference
       Name		      "VelY"
       SID		      15
       Ports		      [1, 1]
-      Position		      [930, 467, 990, 503]
+      Position		      [1075, 212, 1135, 248]
       LibraryVersion	      "1.216"
       SourceBlock	      "simulink/Discrete/Discrete Derivative"
       SourceType	      "Discrete Derivative"
@@ -1551,9 +1876,84 @@ Model {
     }
     Block {
       BlockType		      Gain
+      Name		      "channel17"
+      SID		      52
+      Position		      [320, 530, 345, 560]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "channel18"
+      SID		      53
+      Position		      [320, 615, 345, 645]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "channel19"
+      SID		      54
+      Position		      [320, 690, 345, 720]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "channel20"
+      SID		      55
+      Position		      [320, 760, 345, 790]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
       Name		      "channel5"
-      SID		      21
-      Position		      [275, 405, 300, 435]
+      SID		      56
+      Position		      [330, 345, 355, 375]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "channel9"
+      SID		      57
+      Position		      [320, 445, 345, 475]
       ParameterDataTypeMode   "Inherit via internal rule"
       ParameterDataType	      "fixdt(1, 16)"
       ParameterScaling	      "2^0"
@@ -1686,8 +2086,166 @@ Model {
     Line {
       SrcBlock		      "channel5"
       SrcPort		      1
-      DstBlock		      "Terminator4"
+      Points		      [55, 0; 0, 70; 165, 0]
+      DstBlock		      "Vector\nConcatenate"
       DstPort		      1
+    }
+    Line {
+      SrcBlock		      "DS1103MUX_ADC_CON3"
+      SrcPort		      1
+      DstBlock		      "channel9"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "channel9"
+      SrcPort		      1
+      Points		      [15, 0; 0, 55]
+      DstBlock		      "Vector\nConcatenate"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "channel17"
+      SrcPort		      1
+      Points		      [10, 0; 0, -10]
+      DstBlock		      "Vector\nConcatenate"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "DS1103ADC_C17"
+      SrcPort		      1
+      DstBlock		      "channel17"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "channel18"
+      SrcPort		      1
+      Points		      [5, 0; 0, -45; 180, 0; 0, -30]
+      DstBlock		      "Vector\nConcatenate"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "DS1103ADC_C18"
+      SrcPort		      1
+      DstBlock		      "channel18"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "channel19"
+      SrcPort		      1
+      Points		      [15, 0; 0, -30; 85, 0; 0, -70; 100, 0; 0, -30]
+      DstBlock		      "Vector\nConcatenate"
+      DstPort		      5
+    }
+    Line {
+      SrcBlock		      "DS1103ADC_C19"
+      SrcPort		      1
+      DstBlock		      "channel19"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "channel20"
+      SrcPort		      1
+      Points		      [15, 0; 0, -30; 150, 0; 0, -90; 65, 0]
+      DstBlock		      "Vector\nConcatenate"
+      DstPort		      6
+    }
+    Line {
+      SrcBlock		      "DS1103ADC_C20"
+      SrcPort		      1
+      DstBlock		      "channel20"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      1
+      DstBlock		      "GainFx"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      2
+      DstBlock		      "GainFy"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      3
+      DstBlock		      "GainFz"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      4
+      DstBlock		      "GainMx"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      5
+      DstBlock		      "GainMy"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      6
+      DstBlock		      "GainMz"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "GainFx"
+      SrcPort		      1
+      DstBlock		      "Fx"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "GainFy"
+      SrcPort		      1
+      DstBlock		      "Fy"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "GainFz"
+      SrcPort		      1
+      DstBlock		      "Fz"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "GainMx"
+      SrcPort		      1
+      DstBlock		      "Mx"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "GainMy"
+      SrcPort		      1
+      DstBlock		      "My"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "GainMz"
+      SrcPort		      1
+      DstBlock		      "Mz"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Matrix Multiply"
+      SrcPort		      1
+      Points		      [45, 0; 0, 15]
+      DstBlock		      "Demux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Constant"
+      SrcPort		      1
+      Points		      [25, 0; 0, 45]
+      DstBlock		      "Matrix Multiply"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Vector\nConcatenate"
+      SrcPort		      1
+      DstBlock		      "Matrix Multiply"
+      DstPort		      2
     }
   }
 }

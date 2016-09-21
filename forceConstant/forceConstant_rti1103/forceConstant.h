@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "forceConstant.mdl".
  *
- * Model version              : 1.1
+ * Model version              : 1.6
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Sun Sep 11 14:15:03 2016
+ * C source code generated on : Wed Sep 21 14:17:39 2016
  *
  * Target selection: rti1103.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -774,23 +774,35 @@
 
 /* Block signals (auto storage) */
 typedef struct {
+  real_T SFunction;                    /* '<S1>/S-Function' */
+  real_T SFunction_l;                  /* '<S2>/S-Function' */
+  real_T SFunction_m;                  /* '<S3>/S-Function' */
+  real_T SFunction_e;                  /* '<S4>/S-Function' */
+  real_T SFunction_p;                  /* '<S7>/S-Function' */
+  real_T SFunction_l4;                 /* '<S8>/S-Function' */
+  real_T VectorConcatenate[6];         /* '<Root>/Vector Concatenate' */
+  real_T MatrixMultiply[6];            /* '<Root>/Matrix Multiply' */
+  real_T GainFx;                       /* '<Root>/GainFx' */
+  real_T GainFy;                       /* '<Root>/GainFy' */
+  real_T GainFz;                       /* '<Root>/GainFz' */
+  real_T GainMx;                       /* '<Root>/GainMx' */
+  real_T GainMy;                       /* '<Root>/GainMy' */
+  real_T GainMz;                       /* '<Root>/GainMz' */
   real_T DiscreteTimeIntegrator;       /* '<Root>/Discrete-Time Integrator' */
   real_T index;                        /* '<Root>/index' */
   real_T input;                        /* '<Root>/input' */
   real_T u;                            /* '<Root>/u' */
-  real_T SFunction;                    /* '<S3>/S-Function' */
-  real_T channel5;                     /* '<Root>/channel5' */
-  real_T SFunction1;                   /* '<S7>/S-Function1' */
-  real_T encGainY;                     /* '<S4>/encGainY' */
-  real_T TSamp;                        /* '<S6>/TSamp' */
-  real_T Uk1;                          /* '<S6>/UD' */
-  real_T Diff;                         /* '<S6>/Diff' */
+  real_T SFunction1;                   /* '<S12>/S-Function1' */
+  real_T encGainY;                     /* '<S9>/encGainY' */
+  real_T TSamp;                        /* '<S11>/TSamp' */
+  real_T Uk1;                          /* '<S11>/UD' */
+  real_T Diff;                         /* '<S11>/Diff' */
 } BlockIO_forceConstant;
 
 /* Block states (auto storage) for system '<Root>' */
 typedef struct {
   real_T DiscreteTimeIntegrator_DSTATE;/* '<Root>/Discrete-Time Integrator' */
-  real_T UD_DSTATE;                    /* '<S6>/UD' */
+  real_T UD_DSTATE;                    /* '<S11>/UD' */
 } D_Work_forceConstant;
 
 /* Backward compatible GRT Identifiers */
@@ -807,6 +819,45 @@ typedef struct {
 
 /* Parameters (auto storage) */
 struct Parameters_forceConstant_ {
+  real_T Constant_Value[36];           /* Expression: calMatrix
+                                        * Referenced by: '<Root>/Constant'
+                                        */
+  real_T channel5_Gain;                /* Expression: 1
+                                        * Referenced by: '<Root>/channel5'
+                                        */
+  real_T channel9_Gain;                /* Expression: 1
+                                        * Referenced by: '<Root>/channel9'
+                                        */
+  real_T channel17_Gain;               /* Expression: 1
+                                        * Referenced by: '<Root>/channel17'
+                                        */
+  real_T channel18_Gain;               /* Expression: 1
+                                        * Referenced by: '<Root>/channel18'
+                                        */
+  real_T channel19_Gain;               /* Expression: 1
+                                        * Referenced by: '<Root>/channel19'
+                                        */
+  real_T channel20_Gain;               /* Expression: 1
+                                        * Referenced by: '<Root>/channel20'
+                                        */
+  real_T GainFx_Gain;                  /* Expression: 1
+                                        * Referenced by: '<Root>/GainFx'
+                                        */
+  real_T GainFy_Gain;                  /* Expression: 1
+                                        * Referenced by: '<Root>/GainFy'
+                                        */
+  real_T GainFz_Gain;                  /* Expression: 1
+                                        * Referenced by: '<Root>/GainFz'
+                                        */
+  real_T GainMx_Gain;                  /* Expression: 1
+                                        * Referenced by: '<Root>/GainMx'
+                                        */
+  real_T GainMy_Gain;                  /* Expression: 1
+                                        * Referenced by: '<Root>/GainMy'
+                                        */
+  real_T GainMz_Gain;                  /* Expression: 1
+                                        * Referenced by: '<Root>/GainMz'
+                                        */
   real_T Reset_Value;                  /* Expression: 0
                                         * Referenced by: '<Root>/Reset'
                                         */
@@ -819,20 +870,17 @@ struct Parameters_forceConstant_ {
   real_T index_Gain;                   /* Expression: 1000
                                         * Referenced by: '<Root>/index'
                                         */
-  real_T input_table[30000];           /* Expression: u
+  real_T input_table[100000];          /* Expression: u
                                         * Referenced by: '<Root>/input'
                                         */
-  real_T channel5_Gain;                /* Expression: 1
-                                        * Referenced by: '<Root>/channel5'
-                                        */
   real_T encGainY_Gain;                /* Expression: 4/5614
-                                        * Referenced by: '<S4>/encGainY'
+                                        * Referenced by: '<S9>/encGainY'
                                         */
   real_T TSamp_WtEt;                   /* Computed Parameter: TSamp_WtEt
-                                        * Referenced by: '<S6>/TSamp'
+                                        * Referenced by: '<S11>/TSamp'
                                         */
   real_T UD_X0;                        /* Expression: ICPrevScaledInput
-                                        * Referenced by: '<S6>/UD'
+                                        * Referenced by: '<S11>/UD'
                                         */
 };
 
@@ -973,15 +1021,20 @@ extern struct RT_MODEL_forceConstant *forceConstant_M;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : forceConstant
- * '<S1>'   : forceConstant/DS1103DAC_C2
- * '<S2>'   : forceConstant/DS1103ENC_SETUP
- * '<S3>'   : forceConstant/DS1103MUX_ADC_CON2
- * '<S4>'   : forceConstant/EncoderY
- * '<S5>'   : forceConstant/RTI Data
- * '<S6>'   : forceConstant/VelY
- * '<S7>'   : forceConstant/EncoderY/DS1103ENC_POS_C3
- * '<S8>'   : forceConstant/RTI Data/RTI Data Store
- * '<S9>'   : forceConstant/RTI Data/RTI Data Store/RTI Data Store
- * '<S10>'  : forceConstant/RTI Data/RTI Data Store/RTI Data Store/RTI Data Store
+ * '<S1>'   : forceConstant/DS1103ADC_C17
+ * '<S2>'   : forceConstant/DS1103ADC_C18
+ * '<S3>'   : forceConstant/DS1103ADC_C19
+ * '<S4>'   : forceConstant/DS1103ADC_C20
+ * '<S5>'   : forceConstant/DS1103DAC_C2
+ * '<S6>'   : forceConstant/DS1103ENC_SETUP
+ * '<S7>'   : forceConstant/DS1103MUX_ADC_CON2
+ * '<S8>'   : forceConstant/DS1103MUX_ADC_CON3
+ * '<S9>'   : forceConstant/EncoderY
+ * '<S10>'  : forceConstant/RTI Data
+ * '<S11>'  : forceConstant/VelY
+ * '<S12>'  : forceConstant/EncoderY/DS1103ENC_POS_C3
+ * '<S13>'  : forceConstant/RTI Data/RTI Data Store
+ * '<S14>'  : forceConstant/RTI Data/RTI Data Store/RTI Data Store
+ * '<S15>'  : forceConstant/RTI Data/RTI Data Store/RTI Data Store/RTI Data Store
  */
 #endif                                 /* RTW_HEADER_forceConstant_h_ */
