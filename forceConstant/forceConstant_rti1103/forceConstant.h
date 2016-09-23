@@ -5,7 +5,7 @@
  *
  * Model version              : 1.6
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Wed Sep 21 14:17:39 2016
+ * C source code generated on : Thu Sep 22 22:06:55 2016
  *
  * Target selection: rti1103.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -781,6 +781,7 @@ typedef struct {
   real_T SFunction_p;                  /* '<S7>/S-Function' */
   real_T SFunction_l4;                 /* '<S8>/S-Function' */
   real_T VectorConcatenate[6];         /* '<Root>/Vector Concatenate' */
+  real_T MathFunction[6];              /* '<S11>/Math Function' */
   real_T MatrixMultiply[6];            /* '<Root>/Matrix Multiply' */
   real_T GainFx;                       /* '<Root>/GainFx' */
   real_T GainFy;                       /* '<Root>/GainFy' */
@@ -792,17 +793,17 @@ typedef struct {
   real_T index;                        /* '<Root>/index' */
   real_T input;                        /* '<Root>/input' */
   real_T u;                            /* '<Root>/u' */
-  real_T SFunction1;                   /* '<S12>/S-Function1' */
+  real_T SFunction1;                   /* '<S13>/S-Function1' */
   real_T encGainY;                     /* '<S9>/encGainY' */
-  real_T TSamp;                        /* '<S11>/TSamp' */
-  real_T Uk1;                          /* '<S11>/UD' */
-  real_T Diff;                         /* '<S11>/Diff' */
+  real_T TSamp;                        /* '<S12>/TSamp' */
+  real_T Uk1;                          /* '<S12>/UD' */
+  real_T Diff;                         /* '<S12>/Diff' */
 } BlockIO_forceConstant;
 
 /* Block states (auto storage) for system '<Root>' */
 typedef struct {
   real_T DiscreteTimeIntegrator_DSTATE;/* '<Root>/Discrete-Time Integrator' */
-  real_T UD_DSTATE;                    /* '<S11>/UD' */
+  real_T UD_DSTATE;                    /* '<S12>/UD' */
 } D_Work_forceConstant;
 
 /* Backward compatible GRT Identifiers */
@@ -877,10 +878,10 @@ struct Parameters_forceConstant_ {
                                         * Referenced by: '<S9>/encGainY'
                                         */
   real_T TSamp_WtEt;                   /* Computed Parameter: TSamp_WtEt
-                                        * Referenced by: '<S11>/TSamp'
+                                        * Referenced by: '<S12>/TSamp'
                                         */
   real_T UD_X0;                        /* Expression: ICPrevScaledInput
-                                        * Referenced by: '<S11>/UD'
+                                        * Referenced by: '<S12>/UD'
                                         */
 };
 
@@ -1031,10 +1032,11 @@ extern struct RT_MODEL_forceConstant *forceConstant_M;
  * '<S8>'   : forceConstant/DS1103MUX_ADC_CON3
  * '<S9>'   : forceConstant/EncoderY
  * '<S10>'  : forceConstant/RTI Data
- * '<S11>'  : forceConstant/VelY
- * '<S12>'  : forceConstant/EncoderY/DS1103ENC_POS_C3
- * '<S13>'  : forceConstant/RTI Data/RTI Data Store
- * '<S14>'  : forceConstant/RTI Data/RTI Data Store/RTI Data Store
- * '<S15>'  : forceConstant/RTI Data/RTI Data Store/RTI Data Store/RTI Data Store
+ * '<S11>'  : forceConstant/Transpose
+ * '<S12>'  : forceConstant/VelY
+ * '<S13>'  : forceConstant/EncoderY/DS1103ENC_POS_C3
+ * '<S14>'  : forceConstant/RTI Data/RTI Data Store
+ * '<S15>'  : forceConstant/RTI Data/RTI Data Store/RTI Data Store
+ * '<S16>'  : forceConstant/RTI Data/RTI Data Store/RTI Data Store/RTI Data Store
  */
 #endif                                 /* RTW_HEADER_forceConstant_h_ */

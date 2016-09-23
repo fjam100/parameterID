@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6"
+    ComputedModelVersion    "1.7"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,9 +31,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "daq"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Sep 21 13:42:09 2016"
-  RTWModifiedTimeStamp	  396366122
-  ModelVersionFormat	  "1.%<AutoIncrement:6>"
+  LastModifiedDate	  "Thu Sep 22 22:08:54 2016"
+  RTWModifiedTimeStamp	  396482763
+  ModelVersionFormat	  "1.%<AutoIncrement:7>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1018,12 +1018,12 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    94
+    SIDHighWatermark	    103
     Block {
       BlockType		      Constant
       Name		      "Constant"
       SID		      35
-      Position		      [670, 465, 700, 495]
+      Position		      [685, 605, 715, 635]
       Value		      "calMatrix"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
@@ -1619,10 +1619,10 @@ Model {
 	Block {
 	  BlockType		  SubSystem
 	  Name			  "RTI Data Store"
-	  SID			  91
+	  SID			  100
 	  Tag			  "struct('private',struct('version',struct('dsVer',uint32(2),'dsVerCreation',uint32(2),'RTI',struct('ver','6"
-	  ".5','type','RTI1103')),'access',struct('type','Model','isPerm',1,'created',['11-Sep-2016 13:27:34'],'modified',['21"
-	  "-Sep-2016 13:42:09'],'location','')),'public',struct('main',struct('data',[]),'sub',struct('name',{{'forceConstant'"
+	  ".5','type','RTI1103')),'access',struct('type','Model','isPerm',1,'created',['11-Sep-2016 13:27:34'],'modified',['22"
+	  "-Sep-2016 22:08:54'],'location','')),'public',struct('main',struct('data',[]),'sub',struct('name',{{'forceConstant'"
 	  "}},'data',{{struct('TH',struct('thTaskInfo',struct('taskType',{'TIMER','HWINT','TMRINT','SWINT'},'tasksNumOf',{1,0,"
 	  "0,0},'srcIds',{{'TIMERA'},{},{},{}},'taskNames',{{['Timer Task 1']},{},{},{}})),'th_tc',struct('dataType','TASK','t"
 	  "askGroupId','','taskGroupList',{{}},'taskSchedulingPolicy','FCFS','taskType','TIMER','blkh',-1,'srcId','TIMERA','sr"
@@ -1672,7 +1672,7 @@ Model {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "RTI Data Store"
-	      SID		      92
+	      SID		      101
 	      Ports		      []
 	      Position		      [146, 15, 181, 28]
 	      ForegroundColor	      "white"
@@ -1713,7 +1713,7 @@ Model {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "RTI Data Store"
-		  SID			  93
+		  SID			  102
 		  Ports			  []
 		  Position		  [146, 15, 181, 28]
 		  ForegroundColor	  "white"
@@ -1754,7 +1754,7 @@ Model {
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "RTI Data Store"
-		    SID			    94
+		    SID			    103
 		    Ports		    []
 		    Position		    [146, 15, 181, 28]
 		    ForegroundColor	    "white"
@@ -1835,6 +1835,26 @@ Model {
       Name		      "Terminator3"
       SID		      14
       Position		      [1165, 220, 1185, 240]
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Transpose"
+      SID		      99
+      Ports		      [1, 1]
+      Position		      [675, 505, 730, 545]
+      LibraryVersion	      "1.848"
+      SourceBlock	      "dspmtrx3/Transpose"
+      SourceType	      "Transpose"
+      ShowPortLabels	      "FromPortIcon"
+      SystemSampleTime	      "-1"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      Hermitian		      off
+      overflowFlag	      off
     }
     Block {
       BlockType		      Concatenate
@@ -2237,15 +2257,22 @@ Model {
     Line {
       SrcBlock		      "Constant"
       SrcPort		      1
-      Points		      [25, 0; 0, 45]
+      Points		      [20, 0; 0, -75]
       DstBlock		      "Matrix Multiply"
-      DstPort		      1
+      DstPort		      2
     }
     Line {
       SrcBlock		      "Vector\nConcatenate"
       SrcPort		      1
+      Points		      [10, 0; 0, -20]
+      DstBlock		      "Transpose"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Transpose"
+      SrcPort		      1
       DstBlock		      "Matrix Multiply"
-      DstPort		      2
+      DstPort		      1
     }
   }
 }

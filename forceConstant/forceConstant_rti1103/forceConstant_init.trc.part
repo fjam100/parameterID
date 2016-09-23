@@ -3,7 +3,7 @@
 --  Trace file: forceConstant.trc
 --
 --  RTI1103 6.5 (10-May-2010)
---  Wed Sep 21 14:17:39 2016
+--  Thu Sep 22 22:06:55 2016
 --
 --  Used options:
 --    TRCGenerateVirtualBlocks      = 1
@@ -28,7 +28,7 @@
 
 _genname     "RTI"
 _genversion  "6.5"
-_gendate     "09/21/2016 14:17:42"
+_gendate     "09/22/2016 22:07:00"
 _description ""
 _author      "RTI1103 6.5 (10-May-2010)"
 _model       "forceConstant.mdl"
@@ -49,6 +49,7 @@ sampling_period[0]
 
 -- Type definitions for arrays
 typedef forceConstant_ArrayDT0_6 flt(64,IEEE)[6]
+typedef forceConstant_ArrayDT0_1_6_Col col flt(64,IEEE)[1][6]
 typedef forceConstant_ArrayDT0_6_6_Col col flt(64,IEEE)[6][6]
 typedef forceConstant_ArrayDT0_100000 flt(64,IEEE)[100000]
 typedef forceConstant_ArrayDT0_100000_Col col flt(64,IEEE)[100000]

@@ -61,42 +61,42 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[12]
+		p_forceConstant_B_real_T_0[18]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
 		 desc:    ""
 		 flags:   OUTPUT|READONLY
 		}
-		p_forceConstant_B_real_T_0[13]
+		p_forceConstant_B_real_T_0[19]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out2"
 		 desc:    ""
 		 flags:   OUTPUT|READONLY
 		}
-		p_forceConstant_B_real_T_0[14]
+		p_forceConstant_B_real_T_0[20]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out3"
 		 desc:    ""
 		 flags:   OUTPUT|READONLY
 		}
-		p_forceConstant_B_real_T_0[15]
+		p_forceConstant_B_real_T_0[21]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out4"
 		 desc:    ""
 		 flags:   OUTPUT|READONLY
 		}
-		p_forceConstant_B_real_T_0[16]
+		p_forceConstant_B_real_T_0[22]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out5"
 		 desc:    ""
 		 flags:   OUTPUT|READONLY
 		}
-		p_forceConstant_B_real_T_0[17]
+		p_forceConstant_B_real_T_0[23]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out6"
@@ -113,7 +113,7 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[24]
+		p_forceConstant_B_real_T_0[30]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
@@ -142,7 +142,7 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[18]
+		p_forceConstant_B_real_T_0[24]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
@@ -165,7 +165,7 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[19]
+		p_forceConstant_B_real_T_0[25]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
@@ -188,7 +188,7 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[20]
+		p_forceConstant_B_real_T_0[26]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
@@ -211,7 +211,7 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[21]
+		p_forceConstant_B_real_T_0[27]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
@@ -234,7 +234,7 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[22]
+		p_forceConstant_B_real_T_0[28]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
@@ -257,7 +257,7 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[23]
+		p_forceConstant_B_real_T_0[29]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
@@ -418,7 +418,7 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[25]
+		p_forceConstant_B_real_T_0[31]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
@@ -441,9 +441,9 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[12]
+		p_forceConstant_B_real_T_0[18]
 		{
-		 type:    forceConstant_ArrayDT0_6*
+		 type:    forceConstant_ArrayDT0_1_6_Col*
 		 alias:   "Out1"
 		 desc:    ""
 		 flags:   OUTPUT|READONLY
@@ -458,7 +458,7 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[27]
+		p_forceConstant_B_real_T_0[33]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
@@ -475,14 +475,14 @@ group "Model Root"
 	 desc:  ""
 	 flags: BLOCK|COLLAPSED
 	}
-		p_forceConstant_B_real_T_0[26]
+		p_forceConstant_B_real_T_0[32]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "Out1"
 		 desc:    ""
 		 flags:   OUTPUT|READONLY
 		}
-		p_forceConstant_B_real_T_0[25]
+		p_forceConstant_B_real_T_0[31]
 		{
 		 type:    flt(64,IEEE)*
 		 alias:   "In1"
@@ -669,7 +669,7 @@ group "Model Root"
 		 desc:  ""
 		}
 
-			p_forceConstant_B_real_T_0[28]
+			p_forceConstant_B_real_T_0[34]
 			{
 			 type:    flt(64,IEEE)*
 			 alias:   "Enc position"
@@ -690,6 +690,59 @@ group "Model Root"
 	}
 
 	endgroup -- subsystem-group "RTI Data"
+  
+  
+	group "Transpose" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+		p_forceConstant_B_real_T_0[12]
+		{
+		 type:    forceConstant_ArrayDT0_1_6_Col*
+		 alias:   "Out1"
+		 desc:    ""
+		 flags:   OUTPUT|READONLY
+		}
+
+		group "In1" -- block-group
+		{
+		 block: "Inport"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_forceConstant_B_real_T_0[6]
+			{
+			 type:    forceConstant_ArrayDT0_6*
+			 alias:   "Out1"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+
+
+		endgroup -- block-group "In1"
+
+		group "Math\nFunction" -- block-group
+		{
+		 block: "Math"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_forceConstant_B_real_T_0[12]
+			{
+			 type:    forceConstant_ArrayDT0_1_6_Col*
+			 alias:   "Out1"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+
+
+		endgroup -- block-group "Math\nFunction"
+
+
+
+	endgroup -- subsystem-group "Transpose"
   
   
 	group "VelY" -- subsystem-group

@@ -13,7 +13,7 @@ FileCount=0
 FileCount=2
 File1=..\layout2.lay
 FileInWorkingRoot1=false
-FileDate1=20160921134838
+FileDate1=20160923124240
 FileVisibleToUser1=true
 FileAutoOpen1=true
 FileConsistencyCheck1=true
@@ -47,7 +47,7 @@ FileCount=0
 FileCount=1
 File1=forceconstant.sdf
 FileInWorkingRoot1=true
-FileDate1=20160921141739
+FileDate1=20160922220655
 FileSize1=179
 FileCRC1=ee51874a
 FileVisibleToUser1=true
@@ -169,7 +169,7 @@ Top=102
 Right=1935
 Bottom=934
 Docked=1
-Visible=true
+Visible=false
 
 [PythonInterpreter.OpenFiles]
 Count=0
