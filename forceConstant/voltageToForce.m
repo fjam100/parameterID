@@ -5,7 +5,7 @@ clear all;
 clc;
 
 calMatrix=csvread('calibration.csv');
-name='horizontal';
+name='estimationdata';
 rec=load(strcat(name,'.mat'));
 
 % for i=1:length(rec.rec1.Y(1).Data)
@@ -19,12 +19,9 @@ a = 1;
 
 Fx = filter(b,a,rec.(name).Y(1).Data);
 Fy = filter(b,a,rec.(name).Y(2).Data);
-windowSize = 20;
-b = (1/windowSize)*ones(1,windowSize);
-a = 1;
 Fz = filter(b,a,rec.(name).Y(3).Data);
 u=rec.(name).Y(4).Data;
-force=sqrt(Fx.^2+Fy.^2);
+force=sqrt(Fx.^2+Fy.^2+Fz.^2);
 forceOffset=mean(force(1:1000));
 force=force-forceOffset;
 
