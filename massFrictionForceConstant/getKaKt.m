@@ -1,8 +1,8 @@
 %% Read recorded forces and perform linear fitting to obtain Ka*Kt for
 %% linear motor+amplifier
-
-clear all;
-clc;
+function [KaKt, Cfric]=getKaKt()
+% clear all;
+% clc;
 
 calMatrix=csvread('calibration.csv');
 name='estimationdata';
@@ -28,6 +28,8 @@ force=force-forceOffset;
 A=[u(30000:end).', ones(size(u(30000:end))).'];
 B=force(30000:end).';
 x=pinv(A)*B;
+KaKt=x(1);
+Cfric=x(2);
 
 % coeffs = polyfit(u(30000:end), force(30000:end), 1);
 % fittedX = linspace(min(u), max(u), 200);
